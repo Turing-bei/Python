@@ -2091,6 +2091,440 @@ Python基础
 
 	--------结束--------
 
+## 关于元组的函数
+	- 以下看代码
+	- 以下函数，对list基本适用
+
+	-----py代码演示------
+
+	# len：获取元组的长度
+		t = （1, 2, 3, 4, 5)
+		len(t)
+
+	# max, min: 最大最小值
+		# 如果，列表或元组中有多个最大最小值，则实际打印出那个
+		print(max(t))
+		# 打印结果：5
+		print(min(t))
+		# 打印结果：1
+
+	# tuple：转化或创建元组
+		l = [1, 2, 3, 4, 5]
+		t = tuple(l)
+		print(t)
+		# 打印结果：(1, 2, 3, 4, 5)
+		t = tuple()
+		print(t)
+		# 打印结果：()
+
+	--------结束--------
+
+# 元组的函数
+	- 基本跟list通用
+
+	-----py代码演示------
+
+	# count：计算制定数据出现的次数
+		t = (2, 1, 2, 3, 45, 1, 1, 2)
+		print(t.count(2))
+		# 打印结果：3
+
+	# index：求制定元素在元组中的索引位置
+		print(t.index(45))
+		# 打印结果：4
+		print(t.index(1))
+		# 打印结果：1
+
+	--------结束--------
+
+# 元组变量交换法
+	- 两个变量交换值
+
+	-----py代码演示------
+
+	# 两个变量交换值
+	a = 1
+	b = 3
+
+	print(a)
+	print(b)
+
+	# java程序员会这么写：
+	c = a
+	a = b
+	b = c
+	print(a)
+	print(b)
+
+	# python的写法
+	a,b = b,a
+	print(a)
+	print(b)
+
+	--------结束--------
+
+# 集合-set
+	- 集合是高中数字中的一个概念
+	- 一堆确定的无序的唯一的数据，集合中每一个数据成为一个元素
+
+	-----py代码演示------
+
+	# 集合的定义
+		s = set()
+		print(type(s))
+		# 打印结果：<class 'set'>
+		print(s)
+		# 打印结果：set()
+		#此时，大括号内一定要有值，否则定义出的是一个dict
+		s = {1, 2, 3, 4, 5, 6, 7}
+		print(s)
+		# 打印结果：{1, 2, 3, 4, 5, 6, 7}
+
+	# 如果只是用大括号定义，则定义的是一个dict类型
+		d = {}
+		print(type(d))
+		# 打印结果：<class 'dict'>
+		print(d)
+		# 打印结果：{}
+
+	--------结束--------
+
+## 集合的特征
+	- 集合内数据无序，即无法使用索引和分片
+	- 集合内部数据元素具有唯一性，可以用来排除重返数据
+	- 集合内的数据，str，int，float，tuple，冰冻集合等，即内部只能放置可哈希数据
+
+## 集合序列操作
+	-----py代码演示------
+	# 成员检测
+		# in，not in
+		s = {4,5,'i','love','python'}
+		print(s)
+
+		if 'love' in s:
+			print('love')
+		if 'haha' not in s:
+			print('no love')
+
+	# 集合遍历操作
+		# for 循环
+		s = {4,5,'i','love','python'}
+		for i in s:
+			print(i, end = '')
+
+	# 带有元组的集合遍历
+		s = {(1,2,3),(4,5,6),(7,8,9)}
+		for k,m,n in s:
+			print(k,'--',m,'--',n)
+		for k in s:
+			print(k)
+
+	--------结束--------
+
+## 集合的内涵
+	-----py代码演示------
+
+	# 普通集合内涵
+	# 以下集合在初始化后自动过滤掉重复元素
+	s = {23,223,545,3,1,2,3,4,3,2,1,2,3,4}
+	print(s)
+	#
+
+	# 普通集合内涵
+	ss = {i for i in s}
+	print(s)
+
+	# 带条件的集合内涵
+	sss = {i for i in s if i % 2 == 0}
+	print(sss)
+
+	# 多循环的集合内涵
+	s1 = {1, 2, 3, 4}
+	s2 = {'i','love','python'}
+	s = {m*n for m in s2 for n in s1}
+	print(s)
+	s = {m*n for m in s2 for n in s1 if n == 2}
+	print(s)
+
+	--------结束--------
+
+## 集合函数/关于集合的函数
+	
+	-----py代码演示------
+
+	# len, max, min:跟其他基本函数一致
+		s = {43,23,56,223,4,2,1222,4,323,1}
+		print(len(s))
+		# 打印结果：9
+		print(max(s))
+		# 打印结果：1222
+		print(min(s))
+		# 打印结果：1
+
+	# set：生成一个集合
+		l = [1, 2, 3, 4, 3, 23, 1, 2, 3, 4]
+		s = set(l)
+		print(s)
+		# 打印结果：{1, 2, 3, 4, 23}
+
+	# add：向集合内添加元素
+		s = {1}
+		s.add(334)
+		print(s)
+		# 打印结果：{1, 334}
+
+	# clear：清空
+		s = {1, 2, 3, 4, 5}
+		s.clear()
+		print(s)
+		# 打印结果：{}
+
+	# copy：拷贝
+	# remove：移除指定的值，直接改变原有值，如果要删除的值不存在，报错
+	# discard：移除集合中指定的值，跟remove一样，但是如果要删除的值不存在，不报错
+		s = {23, 3, 4, 5, 1, 2, 3}
+		s.remove(4)
+		print(s)
+		s.discard(1)
+		print(s)
+
+		s.discard(1100)
+		s.remove(1100)
+		# 为啥remove不存在的值会报keyerror，哈希问题
+
+	# pop随机移除一个元素
+		s = {1,2,3,4,5}
+		d = s.pop()
+		print(d)
+		print(s)
+
+	# 集合函数
+		# intersection：交集
+		# differnce：差集
+		# union：并集
+		# issubset：检查一个集合是否为另一个子集
+		# issuperset：检查一个集合是否为另一个超集
+		s1 = {1, 2, 3, 4, 5, 6}
+		s2 = {5, 6, 7, 8, 9}
+		s_1 = s1.intersection(s2)
+		print(s_1)
+		# 打印结果：{5, 6}
+		s_2 = s1.difference(s2)
+		print(s_2)
+		# 打印结果：{1, 2, 3, 4}
+		s3 = s1.issubset(s2)
+		print(s_3)
+		# 打印结果：False
+
+	# 集合的数学操作
+		s1 = {1,2,3,4,5,6}
+		s2 = {5,6,7,8,9}
+		s_1 = s1 - s2
+		print(s_1)
+		# 打印结果：{1, 2, 3, 4}
+	
+	# frozen set：冰冻集合
+		# 冰冻集合就是不可以进行任何修改的集合
+		# frozenset是一种特殊集合
+		#创建
+		s = frozenset()
+		print(type(s))
+		# 打印结果：<class 'frozenset'>
+		print(s)
+		# 打印结果：frozenset()
+
+	--------结束--------
+
+# dict字典
+	- 字典是一种组合数据，没有顺序的组合数据，数据以键值对形式出现
+
+	-----py代码演示------
+
+	# 字典的创建
+	# 创建空字典1
+	d = {}
+	print(d)
+
+	# 创建空字典2
+	d = dict()
+	print(d)
+
+	# 创建有值的字典，每一组数据用冒号隔开，每一对键值对用逗号隔开
+	d = {'one':1, 'two':2, 'three':3}
+	print(d)
+
+	# 用dict创建有内容字典1
+	d = dict({'one':1, 'two':2, 'three':3})
+	print(d)
+
+	# 用dict创建有内容字典2
+	# 利用关键字参数
+	d = dict(one=1,two=2,three=3)
+	print(d)
+
+	# 用dict创建有内容字典3
+	d = dict([('one',1),('two',2),('three',3)])
+	print(d)
+
+	--------结束--------
+
+## 字典的特征
+	- 字典是序列类型，但是是无序序列，所以没有分片和索引
+	- 字典中的数据每个都有键值对组成，即kv对
+		- key：必须是可哈希的值，比如int，string，float，tuple，但是，liist，set，dict不行
+		- value：任何值
+
+## 字典常见操作
+
+	-----py代码演示------
+
+	# 访问数据
+		d = {'one':1, 'two':2, 'three':3}
+		# 注意访问格式
+		# 中括号内是键值
+		print(d['one'])
+		# 打印结果：1
+
+		# 赋值
+		d['one'] = 'eins'
+		print(d)
+		# 打印结果：{'one':'eins','two':2,'three':3}
+
+		# 删除某个操作
+		# 使用del操作
+		del d['one']
+		print(d)
+		# 打印结果：{'two':2, 'three':3}
+
+	# 成员检测，in，not in
+		# 成员检测检测的是key内容
+		d = {'one':1, 'two':2, 'three':3}
+		
+		if 2 in d
+			print('value')
+		if 'two' in d:
+			print('key')
+		if ('two',2) in d
+			print('kv')
+
+		# 打印结果：key
+
+
+		# 遍历在python2 和 python3 中区别比较大，代码不通用
+		# 按key来使用for循环
+		d = {'one':1, 'two':2, 'three':3}
+		# 使用for循环，直接按key值访问
+		for k in d:
+			print(k, d[k])
+			# 打印结果：one 1 two 2 three 3
+
+		# 上述代码可以改写成如下
+		for k in d.keys():
+			print(k, d[k])
+			# 打印结果：one 1 two 2 three 3
+
+		# 只访问字典的值
+		for v in d.values():
+			print(v)
+			# 打印结果：1 2 3
+
+		# 注意以下特殊用法
+		for k,v in d.items():
+			print(k,'--',v)
+			# 打印结果：one--1 two--2 three--3
+
+	# 字典生成式
+		d = {'one':1, 'two':2, 'three':3}
+
+		# 常规字典生成式
+		dd = {k:v for k,v in d.items()}
+		print(dd)
+		# 打印结果：{'one':1, 'two':2, 'three':3}
+
+		# 加限制条件的字典生成式
+		dd = {k:v for k,v in d.items() if v % 2 == 0}
+		print(dd)
+		# 打印结果：{'two':2}
+
+	--------结束--------
+
+## 字典相关函数
+	
+	-----py代码演示------
+
+	# 通用函数：len, max, min, dict
+
+	# str(字典)：返回字典的字符串格式
+		d = {'one':1, 'two':2, 'three':3}
+		print(str(d))
+		# 打印结果：{'one':1, 'two':2, 'three':3}
+
+	# clear：清空字典
+
+	# items：返回字典的简直对组成的元组格式
+		d = {'one':1, 'two':2, 'three':3}
+		i = d.items()
+		print(type(i))
+		# 打印结果：<class 'dict items'>
+		print(i)
+		# 打印结果：dict items([('one',1),('two',2),('three',3)])
+
+	# keys：返回字典的键组成的一个结构
+		k = d.keys()
+		print(type(k))
+		# 打印结果：<class 'dict_keys'>
+		print(k)
+		# 打印结果：dict_keys(['one','two','three'])
+
+	# values：同理，一个可迭代的结构
+		v = d.values()
+		print(type(v))
+		# 打印结果：<class 'dict_values'>
+		print(v)
+		# 打印结果：dict_values([1, 2, 3])
+
+	# get：根据制定键返回相应的值，好处是，可以设置默认值
+		d = {'one':1, 'two':2, 'three':3}
+		print(d.get('on333'))
+		# 打印结果：None
+
+		# get默认值是None，可以设置
+		print(d.get('one',100))
+		# 打印结果：1
+		# 如果没有找到返回默认值100
+		print(d.get('one333',100))
+		# 打印结果：100
+
+		# 体会以下代码跟上面代码的区别
+		print(d['on333'])
+
+
+	# fromkeys: 使用指定的序列作为键，使用一个值作为字典的所有的键的值
+		l = ['eins', 'zwei', 'drei']
+		# 注意 fromkeys两个参数的类型
+		# 注意 formkeys的调用主体
+		d = dict.fromkeys(l,'hahaha')
+		print(d)
+		# 打印结果：{'eins': 'hahaha', 'zwei': 'hahaha', 'drei': 'hahaha'}
+
+	--------结束--------
+
+# OOP-python面向对象
+
+- Python的面向对象
+- 面向对象编程
+	- 基础
+	- 公有私有
+	- 继承
+	- 组合，Mixin
+- 魔法函数
+	- 魔法函数概述
+	- 构造类魔法函数
+	- 运算类魔法函数
+
+# 1.面向对象概述(ObjectOriented, OO)
+- OOP思想
+	- 接触到任意一个任务，首先想到的是任务这个世界的构成，是有模型构成的
 
 
 
